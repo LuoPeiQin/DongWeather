@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="dong_weather"/>
+    <version value="8" />
+    <list>
+        <mapping class="com.dong.dongweather.db.Province" />
+        <mapping class="com.dong.dongweather.db.City" />
+        <mapping class="com.dong.dongweather.db.County" />
+        <mapping class="com.dong.dongweather.db.SelectedCounty" />
+        <mapping class="com.dong.dongweather.db.CountyChanged" />
+    </list>
+</litepal>

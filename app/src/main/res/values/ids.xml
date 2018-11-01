@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="drag_click_remove">false</item>
+    <item type="id" name="drag_move_iv">false</item>
+</resources>

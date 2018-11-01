@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/drag_move_iv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/move"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:id="@+id/drag_county_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:textColor="#000"
+        android:gravity="center"
+        android:layout_toRightOf="@id/drag_move_iv"/>
+
+    <ImageView
+        android:id="@id/drag_click_remove"
+        android:background="@drawable/delete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"/>
+</RelativeLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dslv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#127">
+
+        <Button
+            android:id="@+id/area_back_btn"
+            android:text="＜"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffff"
+            android:textSize="20dp"
+            android:background="#127"/>
+
+        <Button
+            android:id="@+id/edit_cancel_btn"
+            android:text="取消"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffff"
+            android:textSize="30dp"
+            android:background="#127"/>
+
+        <TextView
+            android:text="城市管理"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            />
+
+        <Button
+            android:id="@+id/area_edit_btn"
+            android:text="编辑"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:background="#127"
+            />
+
+        <Button
+            android:id="@+id/edit_save_btn"
+            android:text="保存"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:background="#127"
+            />
+
+    </RelativeLayout>
+
+    <com.mobeta.android.dslv.DragSortListView
+        android:id="@+id/dslvList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:layout_margin="3dp"
+        android:dividerHeight="1px"
+        android:padding="3dp"
+        dslv:click_remove_id="@id/drag_click_remove"
+        dslv:collapsed_height="1px"
+        dslv:drag_enabled="true"
+        dslv:drag_handle_id="@id/drag_move_iv"
+        dslv:drag_scroll_start="0.33"
+        dslv:drag_start_mode="onDown"
+        dslv:float_alpha="0.6"
+        dslv:remove_enabled="true"
+        dslv:remove_mode="clickRemove"
+        dslv:slide_shuffle_speed="0.3" />
+
+    <!--<ListView-->
+        <!--android:id="@+id/area_listview"-->
+        <!--android:layout_weight="9"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+    <!--</ListView>-->
+
+    <Button
+        android:id="@+id/area_add_btn"
+        android:text="+添加"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffff"
+        android:textSize="25dp"
+        android:background="#125"/>
+</LinearLayout>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DongWeather</string>
+    <string name="title_activity_choose_area">ChooseAreaActivity</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+</resources>
