@@ -1,7 +1,6 @@
 package com.dong.dongweather.json;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dong.dongweather.LogUtil;
 import com.dong.dongweather.gson.HeWeather5;
@@ -21,7 +20,7 @@ public class WeatherJson {
         if (!TextUtils.isEmpty(response)) {
             try {
                 JSONObject jsonObject = new JSONObject(response);
-                JSONArray jsonArray = jsonObject.getJSONArray("HeWeather5");
+                JSONArray jsonArray = jsonObject.getJSONArray("HeWeather6");
                 String weateherContent = jsonArray.getJSONObject(0).toString();
                 return new Gson().fromJson(weateherContent, HeWeather5.class);
             } catch (JSONException e) {

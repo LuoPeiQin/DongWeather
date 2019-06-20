@@ -1,7 +1,6 @@
 package com.dong.dongweather;
 
 import android.Manifest;
-import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
@@ -46,9 +44,10 @@ import com.dong.dongweather.http.MyCallBack;
 import com.dong.dongweather.http.MyHttp;
 import com.dong.dongweather.http.OkHttp;
 import com.dong.dongweather.json.WeatherJson;
+import com.dong.dongweather.util.GsonUtils;
+import com.dong.dongweather.util.LogUtils;
 
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -67,6 +66,8 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
     private static final boolean DEBUG = true;
 
     private static final String TAG = "WeatherActivity";
+//    private static final String HE_URL = "https://free-api.heweather.com/v5/weather?city=";
+    private static final String HE_URL = "https://free-api.heweather.net/s6/weather/now?location=";
 
     //获取和风天气的key---自己的
     public static final String KEY = "a0187789a4424bc89254728acd4a08ed";
@@ -371,7 +372,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
                  */
                 locationCountyWeatherId = tempString2.substring(0,tempString2.indexOf('.') + 4)
                         + "," + tempString1.substring(0, tempString1.indexOf('.') + 4);
-                String weatherUrl = "https://free-api.heweather.com/v5/weather?city="
+                String weatherUrl = HE_URL
                         + locationCountyWeatherId + "&key=" + KEY;
                 MyHttp.sendRequestOkHttpForGet(weatherUrl, new MyCallBack() {
                             @Override
@@ -670,7 +671,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
      * 根据天气id请求城市天气信息，专为天气数据缓存使用
      */
     public void requestWeatherBufferAsync(final String weateherId) {
-        String weatherUrl = "https://free-api.heweather.com/v5/weather?city="
+        String weatherUrl = HE_URL
                 + weateherId + "&key=" + KEY;
         Log.d(TAG, "Url: " + weatherUrl);
         MyHttp.sendRequestOkHttpForGet(weatherUrl, new MyCallBack() {
@@ -877,7 +878,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
      * 根据天气id请求城市天气信息，用开源的OKHTTP实现
      */
 //    public void requestWeatherAsync(final String weateherId) {
-//        String weatherUrl = "https://free-api.heweather.com/v5/weather?city="
+//        String weatherUrl = HE_URL
 //                + weateherId + "&key=" + KEY;
 //        //com.dong.dongweather.WeatherActivity.LogUtil.d("timeTest", "WeatherActivity requestWeatherAsync start");
 //        OkHttp.sendRequestOkHttpForGet(weatherUrl, new Callback() {
@@ -925,7 +926,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
      * 根据天气id请求城市天气信息,用自己封装的网络线程实现异步
      */
     public void requestWeatherAsync(final String weateherId) {
-        String weatherUrl = "https://free-api.heweather.com/v5/weather?city="
+        String weatherUrl = HE_URL
                 + weateherId + "&key=" + KEY;
         MyHttp.sendRequestOkHttpForGet(weatherUrl, new MyCallBack() {
             @Override
@@ -945,10 +946,8 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
 
             @Override
             public void onResponse(String response) throws IOException {
-                LogUtil.d("timeTest", "WeatherActivity onResponse start");
-                final String responseText = response;
-                final HeWeather5 heWeather5 = WeatherJson.getWeatherResponse(responseText);
-                LogUtil.d("timeTest", "WeatherActivity onResponse over");
+                LogUtils.d(TAG + "lpq", "onResponse: response = " + response);
+                final HeWeather5 heWeather5 = WeatherJson.getWeatherResponse(response);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -972,6 +971,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
      * 根据获取到的天气信息，显示天气
      */
     private void showWeatherInfo(HeWeather5 heWeather5) {
+        LogUtils.d(TAG + "lpq", "showWeatherInfo: heWeather5 = " + GsonUtils.toJson(heWeather5));
 //        //如果城市天气id等于定位城市id,把值赋给定位城市名
 //        if (locationCountyWeatherName == null && locationCountyWeatherId != null) {
 //            locationCountyWeatherName = heWeather5.basic.cityName;
@@ -1049,18 +1049,18 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
          */
         //初始化hourlyWeatherList
         hourlyWeatherList.clear();
-        HourlyWeather hourlyWeather;
-        for (HourlyForecast hourlyForecast : heWeather5.hourlyForecastList) {
-            hourlyWeather = new HourlyWeather();
-            hourlyWeather.hourlyTime = hourlyForecast.date.substring(11, 13);
-            try {
-                hourlyWeather.hourlyImageBit = BitmapFactory.decodeStream(this.getAssets().open(hourlyForecast.weatherRegime.code + ".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            hourlyWeather.hourlyTemperature = hourlyForecast.tmp;
-            hourlyWeatherList.add(hourlyWeather);
-        }
+//        HourlyWeather hourlyWeather;
+//        for (HourlyForecast hourlyForecast : heWeather5.hourlyForecastList) {
+//            hourlyWeather = new HourlyWeather();
+//            hourlyWeather.hourlyTime = hourlyForecast.date.substring(11, 13);
+//            try {
+//                hourlyWeather.hourlyImageBit = BitmapFactory.decodeStream(this.getAssets().open(hourlyForecast.weatherRegime.code + ".png"));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            hourlyWeather.hourlyTemperature = hourlyForecast.tmp;
+//            hourlyWeatherList.add(hourlyWeather);
+//        }
 
         //水平滑动显示
         hourlyRecycler = (RecyclerView) currentView.findViewById(R.id.hourly_recycler);
@@ -1076,7 +1076,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
         dailyForecastLayout = (LinearLayout) currentView.findViewById(R.id.daily_forecast_layout);
         dailyForecastLayout.removeAllViews();
         LayoutInflater layoutInflater = getLayoutInflater();
-        for (DailyForecast dailyForecast : heWeather5.dailyForecastList) {
+        for (HeWeather5.DailyForecastBean dailyForecast : heWeather5.dailyForecastList) {
             View view = layoutInflater.from(this).inflate(R.layout.daily_forecast_item, dailyForecastLayout, false);
             dailyDate = (TextView) view.findViewById(R.id.daily_date);
             dailyWeather = (TextView) view.findViewById(R.id.daily_weather);
@@ -1111,7 +1111,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
         weatherRiskLevelTv.setText(heWeather5.now.wind.dir + heWeather5.now.wind.sc + "级");
         //降水量
         weatherPrecipitationTv = (TextView) currentView.findViewById(R.id.weather_precipitation_tv);
-        weatherPrecipitationTv.setText("降水量" + heWeather5.now.mypcpn + "mm");
+        weatherPrecipitationTv.setText("降水量" + heWeather5.now.pcpn + "mm");
         //气压
         weatherPressureTv = (TextView) currentView.findViewById(R.id.weather_pressure_tv);
         weatherPressureTv.setText("气压" + heWeather5.now.pres + "百帕");

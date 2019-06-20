@@ -15,22 +15,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.RemoteViews;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.AppWidgetTarget;
-import com.dong.dongweather.gson.HeWeather5;
 import com.dong.dongweather.http.OkHttp;
-import com.dong.dongweather.json.WeatherJson;
 import com.dong.dongweather.service.ListViewService;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import okhttp3.Call;
 import okhttp3.Callback;

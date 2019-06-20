@@ -1,36 +1,27 @@
 package com.dong.dongweather.service;
 
 import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.annotation.UiThread;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.dong.dongweather.LogUtil;
 import com.dong.dongweather.R;
-import com.dong.dongweather.WeatherActivity;
 import com.dong.dongweather.WidgetProvider;
-import com.dong.dongweather.db.CountyChanged;
 import com.dong.dongweather.db.SelectedCounty;
 import com.dong.dongweather.gson.HeWeather5;
 import com.dong.dongweather.http.OkHttp;
 import com.dong.dongweather.json.WeatherJson;
 
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -257,7 +248,7 @@ public class ListViewService extends RemoteViewsService {
                 views.setTextViewText(R.id.widget_countyname_tv, heWeather5.basic.cityName);
             }
             try {
-                String filename = heWeather5.now.weatherRegime.code + ".png";
+                String filename = heWeather5.now.cond.code + ".png";
                 views.setImageViewBitmap(R.id.widget_weather_im, BitmapFactory.decodeStream(getAssets().open(filename)));
             } catch (IOException e) {
                 e.printStackTrace();

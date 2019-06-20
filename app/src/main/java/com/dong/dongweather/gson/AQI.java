@@ -6,6 +6,9 @@ package com.dong.dongweather.gson;
 
 public class AQI {
 
+    /**
+     * city : {"aqi":"15","qlty":"优","pm25":"6","pm10":"15","no2":"11","so2":"5","co":"0.4","o3":"47"}
+     */
     public class City{
         public String aqi;
         public String pm25;
