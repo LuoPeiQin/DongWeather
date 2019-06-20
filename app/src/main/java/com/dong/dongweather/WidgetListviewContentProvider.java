@@ -9,7 +9,8 @@ import android.net.Uri;
 
 import com.dong.dongweather.db.CountyChanged;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
 
 import java.util.List;
 
@@ -65,7 +66,7 @@ public class WidgetListviewContentProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         // Implement this to handle requests to delete one or more rows.
-        DataSupport.deleteAll(CountyChanged.class);
+        LitePal.deleteAll(CountyChanged.class);
         return 0;
     }
 

@@ -3,7 +3,7 @@ package com.dong.dongweather.http;
 import android.net.Uri;
 import android.util.Log;
 
-import org.litepal.util.LogUtil;
+import com.dong.dongweather.LogUtil;
 
 import java.io.IOException;
 

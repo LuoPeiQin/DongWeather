@@ -1,12 +1,12 @@
 package com.dong.dongweather.db;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.crud.LitePalSupport;
 
 /**
  * Created by 44607 on 2017/4/27.
  */
 
-public class CountyChanged extends DataSupport {
+public class CountyChanged extends LitePalSupport {
 
     private int id;
 

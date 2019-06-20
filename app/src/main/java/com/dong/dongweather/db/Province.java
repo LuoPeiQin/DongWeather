@@ -1,13 +1,13 @@
 package com.dong.dongweather.db;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.crud.LitePalSupport;
 
 /**
  * Created by Administrator on 2017/4/15.
  * 用于存放省份信息的表
  */
 
-public class Province extends DataSupport {
+public class Province extends LitePalSupport {
     private int id;
 
     private String provinceName;

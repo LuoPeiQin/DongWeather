@@ -140,11 +140,11 @@ public class WidgetProvider extends AppWidgetProvider {
 //                        manager.updateAppWidget(mComponentName, mRemoteViews);
                         LogUtil.d(TAG, "onUpdate: bingPic = " + bingPic);
                         if (null != bingPic) {
-                            Glide.with( mContent.getApplicationContext() ) // safer!
-                                    .load(bingPic)
-                                    .asBitmap()
-                                    .override(600, 200)
-                                    .into(appWidgetTarget);
+//                            Glide.with( mContent.getApplicationContext() ) // safer!
+//                                    .load(bingPic)
+//                                    .asBitmap()
+//                                    .override(600, 200)
+//                                    .into(appWidgetTarget);
                         }
                         AppWidgetManager manager = AppWidgetManager.getInstance(mContent);
                         mComponentName = new ComponentName(mContent, WidgetProvider.class);
@@ -192,13 +192,12 @@ public class WidgetProvider extends AppWidgetProvider {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 200, toIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         mRemoteViews.setPendingIntentTemplate(R.id.widget_listview, pendingIntent);
 
-        appWidgetTarget = new AppWidgetTarget( mContent, mRemoteViews, R.id.widget_bg_iv, appWidgetIds );
+        appWidgetTarget = new AppWidgetTarget( mContent, R.id.widget_bg_iv, mRemoteViews, appWidgetIds );
         if (null != bingPic) {
-            Glide.with( mContent.getApplicationContext() ) // safer!
-                    .load(bingPic)
-                    .asBitmap()
-                    .override(400, 280)
-                    .into(appWidgetTarget);
+//            Glide.with( mContent.getApplicationContext() ) // safer!
+//                    .load(bingPic)
+//                    .override(400, 280)
+//                    .into(appWidgetTarget);
         }
 //        while (!isMark){}
 //        if (null != pngBM) {

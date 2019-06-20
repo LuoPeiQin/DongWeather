@@ -47,7 +47,8 @@ import com.dong.dongweather.http.MyHttp;
 import com.dong.dongweather.http.OkHttp;
 import com.dong.dongweather.json.WeatherJson;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -245,7 +246,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
         editor.clear();
 
         //从数据库获取已经选择了的城市列表
-        selectedCountisList = DataSupport.findAll(SelectedCounty.class);
+        selectedCountisList = LitePal.findAll(SelectedCounty.class);
         //如果定位城市成功，则先显示定位城市
         //因为百度定位有延迟回调的时间，所以这里先读上一次的位置信息
         //每次启动百度定位都会更新定位信息
@@ -548,7 +549,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
                     if (weatherId.equals("")) {
                         Log.d(TAG, "onStart: data is null");
                     } else {
-                        selectedCountisList = DataSupport.findAll(SelectedCounty.class);
+                        selectedCountisList = LitePal.findAll(SelectedCounty.class);
                         if (!isLocationCountyRemove && null != locationCountyWeatherId) {
                             //如果定位城市存在且未删除，则添加定位城市
                             SelectedCounty selectedCounty = new SelectedCounty();
@@ -714,7 +715,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
             case ADDCOUNTYACTIVITY_RETURN:
                 Log.d(TAG, "ADDCOUNTYACTIVITY_RETURN: in");
                 if (resultCode == RESULT_OK){
-                    selectedCountisList = DataSupport.findAll(SelectedCounty.class);
+                    selectedCountisList = LitePal.findAll(SelectedCounty.class);
                     if (!isLocationCountyRemove && null != locationCountyWeatherId ) {
                         SelectedCounty selectedCounty = new SelectedCounty();
                         selectedCounty.setWeatherId(locationCountyWeatherId);
@@ -744,7 +745,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
                         Log.d(TAG, "onActivityResult: get position error");
                     } else {
                         if (1 == isSwapCounty) {
-                            selectedCountisList = DataSupport.findAll(SelectedCounty.class);
+                            selectedCountisList = LitePal.findAll(SelectedCounty.class);
                             if (!isLocationCountyRemove && null != locationCountyWeatherId) {
                                 SelectedCounty selectedCounty = new SelectedCounty();
                                 selectedCounty.setWeatherId(locationCountyWeatherId);
@@ -757,7 +758,7 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
                         if (ChooseAreaActivity.isDeletedCounties) {
                             //如果在编辑阶段删除了城市,那么重新载入城市
                             ChooseAreaActivity.isDeletedCounties = false;
-                            selectedCountisList = DataSupport.findAll(SelectedCounty.class);
+                            selectedCountisList = LitePal.findAll(SelectedCounty.class);
                             if (!isLocationCountyRemove && null != locationCountyWeatherId) {
                                 SelectedCounty selectedCounty = new SelectedCounty();
                                 selectedCounty.setWeatherId(locationCountyWeatherId);

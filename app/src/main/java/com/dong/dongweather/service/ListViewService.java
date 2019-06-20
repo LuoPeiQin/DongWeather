@@ -29,7 +29,8 @@ import com.dong.dongweather.gson.HeWeather5;
 import com.dong.dongweather.http.OkHttp;
 import com.dong.dongweather.json.WeatherJson;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class ListViewService extends RemoteViewsService {
         public void onCreate() {
             heWeather5List = new ArrayList<>();
             selectedCountyList = new ArrayList<>();
-            selectedCountyList = DataSupport.findAll(SelectedCounty.class);
+            selectedCountyList = LitePal.findAll(SelectedCounty.class);
             Log.d(TAG, "onCreate: selectedCountyList size: " + selectedCountyList.size());
             //查看是否能定位,能定位则添加定位城市到第一位
 
@@ -178,7 +179,7 @@ public class ListViewService extends RemoteViewsService {
             cr.delete(uri, null, null);
             //用sharedPreference不能跨进程
             //这里改用数据库
-//            List<CountyChanged> tempList = DataSupport.findAll(CountyChanged.class);
+//            List<CountyChanged> tempList = LitePalSupport.findAll(CountyChanged.class);
 //            if (tempList.size() > 0) {
 //                CountyChanged countyChanged = tempList.get(0);
 //                String addWeatherID = countyChanged.getAddWeatherID();
@@ -188,7 +189,7 @@ public class ListViewService extends RemoteViewsService {
 //                    SelectedCounty selectenCounty = new SelectedCounty();
 //                    requestWeatherAsync(selectenCounty.getWeatherId());
 //                    selectedCountyList.add(selectenCounty);
-//                    DataSupport.deleteAll(CountyChanged.class);
+//                    LitePalSupport.deleteAll(CountyChanged.class);
 //                    Log.d(TAG, "onDataSetChanged: add succeed");
 //                } else if (null != delCountyPosition) {
 //                    //删除城市
@@ -197,7 +198,7 @@ public class ListViewService extends RemoteViewsService {
 //                        heWeather5List.remove(i);
 //                        Log.d(TAG, "onDataSetChanged: del succeed:" + i);
 //                    }
-//                    DataSupport.deleteAll(CountyChanged.class);
+//                    LitePalSupport.deleteAll(CountyChanged.class);
 //                } else {
 //                    Log.d(TAG, "onDataSetChanged: no Change");
 //                }

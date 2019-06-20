@@ -3,13 +3,13 @@ package com.dong.dongweather.json;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.dong.dongweather.LogUtil;
 import com.dong.dongweather.gson.HeWeather5;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.litepal.util.LogUtil;
 
 /**
  * Created by Administrator on 2017/4/18.

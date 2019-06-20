@@ -3,6 +3,7 @@ package com.dong.dongweather.json;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.dong.dongweather.LogUtil;
 import com.dong.dongweather.db.City;
 import com.dong.dongweather.db.County;
 import com.dong.dongweather.db.Province;
@@ -10,8 +11,6 @@ import com.dong.dongweather.db.Province;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.litepal.util.LogUtil;
-
 import okhttp3.Response;
 import okhttp3.internal.Util;
 

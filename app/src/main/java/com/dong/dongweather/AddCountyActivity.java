@@ -25,8 +25,7 @@ import com.dong.dongweather.db.SelectedCounty;
 import com.dong.dongweather.http.OkHttp;
 import com.dong.dongweather.json.AreaJson;
 
-import org.litepal.crud.DataSupport;
-import org.litepal.util.*;
+import org.litepal.LitePal;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -103,7 +102,7 @@ public class AddCountyActivity extends AppCompatActivity implements View.OnClick
                 }else if (currentLevel == LEVEL_COUNTY) {
                     currentCounty = countyList.get(position);
                     //判断该城市是否已经添加过
-                    if ((selectedCountyList = DataSupport.where("weatherId == ?",currentCounty.getWeatherId()).find(SelectedCounty.class)).size() == 0){
+                    if ((selectedCountyList = LitePal.where("weatherId == ?",currentCounty.getWeatherId()).find(SelectedCounty.class)).size() == 0){
                         //把添加的城市加入到数据库selectedCounty
                         SelectedCounty selectedCounty = new SelectedCounty();
                         selectedCounty.setWeatherId(currentCounty.getWeatherId());
@@ -159,7 +158,7 @@ public class AddCountyActivity extends AppCompatActivity implements View.OnClick
     public void queryProvinces() {
         titleText.setText("中国");
         //backButton.setVisibility(View.GONE);
-        provinceList = DataSupport.findAll(Province.class);
+        provinceList = LitePal.findAll(Province.class);
         if (provinceList.size() > 10) {
             dataList.clear();
             //如果数据库中已有省份数据，则直接读取数据库数据显示到listView上
@@ -181,7 +180,7 @@ public class AddCountyActivity extends AppCompatActivity implements View.OnClick
      */
     public void queryCity(){
         titleText.setText(currentProvince.getProvinceName());
-        cityList = DataSupport.where("provinceId = ?", String.valueOf(currentProvince.getProvinceCode())).find(City.class);
+        cityList = LitePal.where("provinceId = ?", String.valueOf(currentProvince.getProvinceCode())).find(City.class);
         if (cityList.size() > 0) {
             dataList.clear();
             for(City city : cityList){
@@ -203,7 +202,7 @@ public class AddCountyActivity extends AppCompatActivity implements View.OnClick
      */
     public void queryCounty() {
         titleText.setText(currentCity.getCityName());
-        countyList = DataSupport.where("cityId = ?",String.valueOf(currentCity.getCityCode()) ).find(County.class);
+        countyList = LitePal.where("cityId = ?",String.valueOf(currentCity.getCityCode()) ).find(County.class);
         if (countyList.size() > 0) {
             dataList.clear();
             for (County county : countyList){
@@ -266,8 +265,8 @@ public class AddCountyActivity extends AppCompatActivity implements View.OnClick
                         });
                     }
                 }else {
-                    org.litepal.util.LogUtil.d(TAG, "queryForService: error");
-                    org.litepal.util.LogUtil.d(TAG, "response : error");
+                    LogUtil.d(TAG, "queryForService: error");
+                    LogUtil.d(TAG, "response : error");
                 }
 
             }
@@ -285,10 +284,10 @@ public class AddCountyActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.clear_database_btn:
-                DataSupport.deleteAll(Province.class);
-                DataSupport.deleteAll(City.class);
-                DataSupport.deleteAll(County.class);
-                DataSupport.deleteAll(SelectedCounty.class);
+                LitePal.deleteAll(Province.class);
+                LitePal.deleteAll(City.class);
+                LitePal.deleteAll(County.class);
+                LitePal.deleteAll(SelectedCounty.class);
                 break;
             case R.id.back_btn:
                 if (currentLevel == LEVEL_COUNTY) {

@@ -34,7 +34,8 @@ import com.dong.dongweather.db.SelectedCounty;
 import com.dong.dongweather.service.ListViewService;
 import com.mobeta.android.dslv.DragSortListView;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,7 +122,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
     private void initView() {
         //查询当前的以选中城市
         selectedCityList = new ArrayList<>();
-        selectedCityList = DataSupport.findAll(SelectedCounty.class);
+        selectedCityList = LitePal.findAll(SelectedCounty.class);
         //如果定位城市成功，则先显示定位城市
         if (!WeatherActivity.isLocationCountyRemove && null != WeatherActivity.locationCountyWeatherId && null != WeatherActivity.locationCountyWeatherName) {
             SelectedCounty selectedCounty = new SelectedCounty();
@@ -211,7 +212,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
                     areaBackBtn.setText("＜");
                     //如果有城市被删除或者交换了位置，则重新导入城市
                     if (delCountyId.size() > 0 || isSwapCounty) {
-                        selectedCityList = DataSupport.findAll(SelectedCounty.class);
+                        selectedCityList = LitePal.findAll(SelectedCounty.class);
                         //如果定位城市成功，则先显示定位城市
                         if (!WeatherActivity.isLocationCountyRemove && null != WeatherActivity.locationCountyWeatherId) {
                             SelectedCounty selectedCounty = new SelectedCounty();
@@ -340,7 +341,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
                     } else if (delCountyId.size() <= 0 && isSwapCounty) {
                         //2、没有删除，但移动了
                         //如果城市之间交换了位置
-                        DataSupport.deleteAll(SelectedCounty.class);
+                        LitePal.deleteAll(SelectedCounty.class);
                         int i = 0;
                         for (SelectedCounty selectedCounty : selectedCityList) {
                             if (!WeatherActivity.isLocationCountyRemove && null != WeatherActivity.locationCountyWeatherId && 0 == i ) {
@@ -354,7 +355,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
                         }
                     } else if (delCountyId.size() > 0 && isSwapCounty) {
                         //3、删除了，但没有移动
-                        DataSupport.deleteAll(SelectedCounty.class);
+                        LitePal.deleteAll(SelectedCounty.class);
                         int i = 0;
                         for (SelectedCounty selectedCounty : selectedCityList) {
                             if (!WeatherActivity.isLocationCountyRemove && null != WeatherActivity.locationCountyWeatherId && 0 == i ) {
@@ -372,7 +373,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
                         //删除标识变为真
                         isDeletedCounties = true;
                         for (Integer integer : delCountyId) {
-                            DataSupport.delete(SelectedCounty.class, integer);
+                            LitePal.delete(SelectedCounty.class, integer);
                         }
 //                        //保存已删除的城市对应的position
 //                        /**
@@ -393,7 +394,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
 ////                        int[] tempInt = new int[delCountyId.size()];
 ////                        int iCount = 0;
 //                        for (Integer integer : delCountyId) {
-//                            DataSupport.delete(SelectedCounty.class, integer);
+//                            LitePalSupport.delete(SelectedCounty.class, integer);
 //                        }
 ////                        //保存已删除的城市对应的position
 ////                        /**
@@ -545,7 +546,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
 //                isEditClick = false;
 //                if (delCountyId.size() > 0) {
 //                    for (Integer integer : delCountyId) {
-//                        DataSupport.delete(SelectedCounty.class, integer);
+//                        LitePalSupport.delete(SelectedCounty.class, integer);
 //                    }
 //                }
 //                //设置返回和编辑按钮为可选
@@ -565,7 +566,7 @@ public class ChooseAreaActivity extends AppCompatActivity implements View.OnClic
 //            case R.id.edit_cancel_btn:
 //                isEditClick = false;
 //                if (delCountyId.size() > 0) {
-//                    selectedCityList = DataSupport.findAll(SelectedCounty.class);
+//                    selectedCityList = LitePalSupport.findAll(SelectedCounty.class);
 //                    countyAdapter.notifyDataSetChanged();
 //                }
 //                //设置返回和编辑按钮为可选
