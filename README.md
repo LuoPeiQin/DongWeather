@@ -8,5 +8,5 @@
 > 如果此项目给您带来了帮助，您可以选择赞赏来鼓励我继续创作
 > 当然，不赞赏您也可以查看所有文章和源码，没有任何影响
 
-<img src="https://github.com/LuoPeiQin/DongWeather/blob/master/alipay.png" width="150" height="200" alt="支付宝"/>
-![微信](https://github.com/LuoPeiQin/DongWeather/blob/master/weichat.png =100x150)
+<img src="https://github.com/LuoPeiQin/DongWeather/blob/master/alipay.png" width="170" height="200" alt="支付宝"/>
+<img src="https://github.com/LuoPeiQin/DongWeather/blob/master/weichat.png" width="170" height="200" alt="微信"/>
