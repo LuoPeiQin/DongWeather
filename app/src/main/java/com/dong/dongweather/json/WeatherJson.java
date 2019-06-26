@@ -20,7 +20,7 @@ public class WeatherJson {
         if (!TextUtils.isEmpty(response)) {
             try {
                 JSONObject jsonObject = new JSONObject(response);
-                JSONArray jsonArray = jsonObject.getJSONArray("HeWeather6");
+                JSONArray jsonArray = jsonObject.getJSONArray("HeWeather5");
                 String weateherContent = jsonArray.getJSONObject(0).toString();
                 return new Gson().fromJson(weateherContent, HeWeather5.class);
             } catch (JSONException e) {

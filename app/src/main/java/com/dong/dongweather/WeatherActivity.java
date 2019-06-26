@@ -66,8 +66,8 @@ public class WeatherActivity extends AppCompatActivity implements ViewPager.OnPa
     private static final boolean DEBUG = true;
 
     private static final String TAG = "WeatherActivity";
-//    private static final String HE_URL = "https://free-api.heweather.com/v5/weather?city=";
-    private static final String HE_URL = "https://free-api.heweather.net/s6/weather/now?location=";
+    private static final String HE_URL = "https://free-api.heweather.com/v5/weather?city=";
+//    private static final String HE_URL = "https://free-api.heweather.net/s6/weather/hourly?location=";
 
     //获取和风天气的key---自己的
     public static final String KEY = "a0187789a4424bc89254728acd4a08ed";
