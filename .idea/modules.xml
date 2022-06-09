@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DongWeather.iml" filepath="$PROJECT_DIR$/DongWeather.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DongWeather22.iml" filepath="$PROJECT_DIR$/DongWeather22.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DongWeather.iml" filepath="$PROJECT_DIR$/.idea/modules/DongWeather.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/DongWeather.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/DongWeather.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/DongWeather.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/DongWeather.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/DongWeather.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/DongWeather.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/DongWeather.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/DongWeather.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/DongWeather.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/DongWeather.library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/DongWeather.library.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/DongWeather.library.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/DongWeather.library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/library/DongWeather.library.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/DongWeather.library.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/DongWeather.library.unitTest.iml" />
     </modules>
   </component>
 </project>
